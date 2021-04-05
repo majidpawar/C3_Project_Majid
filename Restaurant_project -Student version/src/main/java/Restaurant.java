@@ -66,4 +66,30 @@ public class Restaurant {
         return name;
     }
 
+    int total=0;
+
+    ArrayList<String> order = new ArrayList<>();
+
+    public int addCost(String name){
+        if(getMenu().contains(findItemByName(name))){
+            Item item = findItemByName(name);
+            order.add(item.getName());
+            total = total + item.getPrice();
+        }
+        return total;
+    }
+
+    public int removeCost(String name){
+        if(order.contains(name)){
+            Item item = findItemByName(name);
+            total = total - item.getPrice();
+            order.remove(name);
+        }
+        return total;
+    }
+
+    public int totalCost(){
+        return total;
+    }
+
 }
